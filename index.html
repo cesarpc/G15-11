@@ -1,156 +1,162 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-	<title>YRTEC_CalculoIMC</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <title>YRTEC_CalculoIMC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-	<style type="text/css"> 
-		#tabla td, #tabla th {border-collapse:collapse;
-			border: #000 1px solid;
-			text-align: center;
-			margin: 20;
-  			font-family: Arial, Helvetica, sans-serif;
+    <style type="text/css">
+    #tabla {
+        width: 100%;
+    }
 
-		} #divtabla{display: none;}
-		.topnav {
-  		overflow: hidden;
-  		background-color: #333;
-		}
-		.topnav a {
-  float: right;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+    #tabla td,
+    #tabla th {
+        border-collapse: collapse;
+        border: #000 1px solid;
+        text-align: center;
+        margin: 20;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    #divtabla {
+        display: none;
+        width: 100%;
+    }
 
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
-</head>
-<body>
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+    }
 
-<div class="topnav">
-  <a class="active" href="#home">Inicio</a>
-  <a href="#news">Más sobre Imc</a>
-  <a href="#contact">Contacto</a>
-  <a href="#about">Ayuda</a>
-</div>
-	</style>
-	
-	<div class="container"><br>
-		<div class="row">
-		<div class="col-3"></div>
-		<div class="card col-6"> 
-			<div class="card-header text-center">
+    .topnav a {
+        float: right;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
 
-			<img src="/pngegg.png" alt="Logo" style="width:250px;height:150px;"">
-			<h3>Calculo índice de masa corporal - IMC</h3>
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
 
-			</div>
-			<div class="card-body">
-				<p>Ingrese sus datos</p>
-			<form>
-  				
-  				<input class="form-control" type="text" id="fname" placeholder="Nombre" required=""><br>
-  				
-  				<input class="form-control" type="text" id="lname" placeholder="Apellido" required=""><br>
+    .topnav a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    </style>
+    </head>
 
-  				<input class="form-control" type="number" step="any" id="idestatura" placeholder="Estatura (en centímetros)" required=""><br>
+    <body>
+        <div class="topnav">
+            <a class="active" href="#home">Inicio</a>
+            <a href="#news">Más sobre Imc</a>
+            <a href="#contact">Contacto</a>
+            <a href="#about">Ayuda</a>
+        </div>
+        <div class="container"><br>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="card col-6">
+                    <div class="card-header text-center">
+                        <img src="pngegg.png" alt="Logo" style="width:250px;height:150px;">
+                        <h3>Calculo índice de masa corporal - IMC</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Ingrese sus datos</p>
+                        <form onsubmit="submitForm(event)">
+                            <input class="form-control" type="text" id="fname" placeholder="Nombre" required=""><br>
+                            <input class="form-control" type="text" id="lname" placeholder="Apellido" required=""><br>
+                            <input class="form-control" type="number" step="any" id="idestatura" placeholder="Estatura (en centímetros)" required=""><br>
+                            <input class="form-control" type="number" step="any" id="idpeso" placeholder="Peso (en kilogramos)" required=""><br>
+                            <div style="width: 100%; text-align: center;">
+                                <input class="btn btn-primary" type="submit" value="Calcular IMC"><br><br>
+                            </div>
+                        </form>
+                        <div id="divtabla">
+                            <label>Resutado:</label><br>
+                            <input class="form-control" type="text" id="resultado" disabled="true"><br>
+                            <table id="tabla">
+                                <header>
+                                    <tr>
+                                        <th>Imc</th>
+                                        <th>Peso</th>
+                                    </tr>
+                                </header>
 
-  				<input class="form-control" type="number" step="any" id="idpeso" placeholder="Peso (en kilogramos)" required=""><br>
+                                <body>
+                                    <tr id="bpeso">
+                                        <td>Por debajo de 18.5</td>
+                                        <td>Bajo peso</td>
+                                    </tr>
+                                    <tr id="npeso">
+                                        <td>18.5—24.9</td>
+                                        <td>Normal</td>
+                                    </tr>
+                                    <tr id="speso">
+                                        <td>25—29.9</td>
+                                        <td>Sobrepeso</td>
+                                    </tr>
+                                    <tr id="opeso">
+                                        <td>30 o más</td>
+                                        <td>Obeso</td>
+                                    </tr>
+                                </body>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        function limpiar_colores() {
+            document.getElementById("bpeso").style.backgroundColor = "#FFFFFF";
+            document.getElementById("npeso").style.backgroundColor = "#FFFFFF";
+            document.getElementById("speso").style.backgroundColor = "#FFFFFF";
+            document.getElementById("opeso").style.backgroundColor = "#FFFFFF";
+        }
 
-  				<input class="btn btn-primary" type="button" value="Calcular" formnovalidate="" onclick="calcular_Imc()"><br>
+        function calcular_Imc() {
+            var estatura = document.getElementById('idestatura').value;
+            var peso = document.getElementById('idpeso').value;
+            estatura = estatura / 100;
+            var resultado = peso / (estatura * estatura);
+            resultado = (Math.round(resultado * 100) / 100).toFixed(2);
+            document.getElementById("resultado").value = resultado;
 
-  				<br><label>Resutado:</label><br>
-  				<input class="form-control" type="text" id="resultado" disabled="true">
+            limpiar_colores();
 
-  				<br><div id="divtabla"><table id="tabla">
-  					<header>
-  					<tr>
-  					<th>Imc</th>
-  					<th>Peso</th>	
-  					</tr>	
-  					</header>
-  					<body>
-  					<tr id="bpeso">
-  					<td>Por debajo de 18.5</td>
-  					<td>Bajo peso</td>	
-  					</tr>	
-  					<tr id="npeso">
-  					<td>18.5—24.9</td>
-  					<td>Normal</td>	
-  					</tr>
-  					<tr id="speso">
-  					<td>25—29.9</td>
-  					<td>Sobrepeso</td>	
-  					</tr>
-  					<tr id="opeso">
-  					<td>30 o más</td>
-  					<td>Obeso</td>	
-  					</tr>
-  					</body>
-  				</table></div>
+            if (resultado < 18.5) {
+                document.getElementById("bpeso").style.backgroundColor = "#FA8072";
+                console.log("prueba de color");
+            }
+            if (resultado >= 18.5 && resultado <= 24.9) {
+                document.getElementById("npeso").style.backgroundColor = "#00FF00";
+                console.log("prueba de color");
+            }
+            if (resultado >= 25 && resultado <= 29.9) {
+                document.getElementById("speso").style.backgroundColor = "#FFFF00";
+                console.log("prueba de color");
+            }
+            if (resultado >= 30) {
+                document.getElementById("opeso").style.backgroundColor = "#FF0000";
+                console.log("prueba de color");
+            }
+            document.getElementById("divtabla").style.display = "inline-block";
+        }
+        function submitForm(event) {//Previene el submit
+            event.preventDefault();
+            calcular_Imc();
+        }
+        </script>
+    </body>
 
-
-			</form>	
-			</div>
-		</div>
-		</div>
-	</div>
-<script type="text/javascript">
-
-	function limpiar_colores() {
-		document.getElementById("bpeso").style.backgroundColor="#FFFFFF";
-		document.getElementById("npeso").style.backgroundColor="#FFFFFF";
-		document.getElementById("speso").style.backgroundColor="#FFFFFF";
-		document.getElementById("opeso").style.backgroundColor="#FFFFFF";	
-	}
-
-	function calcular_Imc() {
-		
-		var estatura=document.getElementById('idestatura').value;
-		var peso=document.getElementById('idpeso').value;
-		estatura=estatura/100;
-		var resultado=peso/(estatura*estatura);
-		resultado=(Math.round(resultado*100)/100).toFixed(2);
-		document.getElementById("resultado").value=resultado;
-
-		limpiar_colores();
-
-		if (resultado<18.5) {
-			document.getElementById("bpeso").style.backgroundColor="#FA8072";
-			console.log("prueba de color");
-		}
-		if (resultado>=18.5 && resultado<=24.9) {
-			document.getElementById("npeso").style.backgroundColor="#00FF00";
-			console.log("prueba de color");
-		}
-		if (resultado>=25 && resultado<=29.9) {
-			document.getElementById("speso").style.backgroundColor="#FFFF00";
-			console.log("prueba de color");
-		}
-		if (resultado>=30) {
-			document.getElementById("opeso").style.backgroundColor="#FF0000";
-			console.log("prueba de color");
-		}
-		document.getElementById("divtabla").style.display="flex";
-
-	}
-
-</script>
-</body>
 </html>
