@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function crearElemento() {
+        var id = document.getElementById("idElemento").value;
+        var contenedor = document.getElementById("contenedor");
+        var select = document.getElementById("elemento");
+        var elementoSeleccionado = select.options[select.selectedIndex].value;
+        var texto;
+        var elemento;
+
+        if (document.getElementById(id) != null) {
+            alert("El id ingresado ya existe");
+        } else {
+
+            if (elementoSeleccionado == 1) {
+                texto = "Text creado " + id;
+                elemento = document.createElement("input");
+                elemento.id = id;
+                elemento.type = "text";
+                contenedor.appendChild(elemento);
+                document.getElementById(id).value = texto;
+
+                crearselec(id, texto);
+
+            } else if (elementoSeleccionado == 2) {
+                texto = "Radio creado" + id;
+                elemento = document.createElement("input");
+                var elemento1 = document.createElement("input");
+
+                elemento.name = "radioNombre";
+                elemento1.name = "radioNombre";
+                elemento.type = "radio";
+                elemento1.type = "radio";
+                elemento.id = id;
+                elemento1.id = id + "r";
+
+                contenedor.appendChild(elemento);
+                contenedor.appendChild(elemento1);
+                crearselec(id, texto);
+
+            } else if (elementoSeleccionado == 3) {
+                texto = "Text área" + id;
+                elemento = document.createElement("textarea");
+                elemento.id = id;
+                contenedor.appendChild(elemento);
+                document.getElementById(id).innerHTML = texto;
+                crearselec(id, texto);
+
+            } else if (elementoSeleccionado == 4) {
+                texto = "Boton creado" + id;
+                elemento = document.createElement("button");
+                elemento.id = id;
+                contenedor.appendChild(elemento);
+                document.getElementById(id).innerHTML = texto;
+                crearselec(id, texto);
+            }
+            document.getElementById("cont").style.display = "flex";
+        }
+ 		document.getElementById("idElemento").value = "";
+    }
+
+    function eliminarElemento() {
+
+        var selectE = document.getElementById("selectdelete");
+        var elementoSeleccionadoE = selectE.options[selectE.selectedIndex].value;
+        var optionE = document.getElementById(elementoSeleccionadoE + "op");
+        var elemento = document.getElementById(elementoSeleccionadoE);
+        var r = document.getElementById(elementoSeleccionadoE + "r");
+        /*var contenedorE = document.getElementById("contenedor");*/
+        if (elemento != null) {
+            elemento.parentNode.removeChild(elemento);
+            optionE.parentNode.removeChild(optionE);
+        }
+        if (r != null) {
+            r.parentNode.removeChild(r);
+        }
+    }
+
+    function crearselec(id, texto) {
+        //Agrega al select eliminar
+        var option = document.createElement("option");
+        option.value = id;
+        option.id = id + "op";
+        option.innerHTML = texto;
+        document.getElementById("selectdelete").appendChild(option);
+    }
+    </script>
+    <h1>Javascript</h1>
+    <div>
+        <input type="text" id="idElemento">
+        <select id="elemento">
+            <option value="1" id="text">Input text</option>
+            <option value="2" id="radio">Radio</option>
+            <option value="3" id="textArea">Text Area</option>
+            <option value="4" id="textArea">Button</option>
+        </select>
+        <button type="button" onclick="crearElemento()">Crear elemento</button>
+    </div>
+    <br>
+    <div id="cont" width="100%" style="display: none;">
+        <label>Seleccione elemento a eliminar </label>
+        <select id="selectdelete">
+        </select>
+        <button type="button" onclick="eliminarElemento()">Eliminar elemento</button>
+    </div>
+    <br><br>
+    <div id="contenedor">
+    </div>
+</body>
+
+</html>
