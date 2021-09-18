@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gráficas Google</title>
+    <script type="text/javascript" src="../calculadora_ImcV1.1/js/data.js"></script>
+
+    <!--Load the AJAX API Google Chart-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', { 'packages': ['corechart'] });
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    var dataIMC = datosImc();
+    console.log(dataIMC);
+
+    function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+
+        for (var i = 0; i < dataIMC.length; i++) {
+            data.addRow(["peso", dataIMC[i].peso]);
+        }
+/*
+         data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);*/
+
+        // Set chart options
+        var options = {
+            'title': 'How Much Pizza I Ate Last Night',
+            'width': '100%',
+            'height': 300
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_column'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.Histogram(document.getElementById('chart_div_histogram'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_bar'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div_bar'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div_area'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div_stepped_area'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div_line'));
+        chart.draw(data, options);
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_pie'));
+        chart.draw(data, options);
+
+ 
+    }
+    </script>
+</head>
+
+<body>
+    <style type="text/css">
+    #graficas {
+        width: 100%;
+    }
+
+    #graficas div {
+        width: 50%;
+        float: left;
+    }
+    </style>
+    <div id="graficas">
+        <div id="chart_div_geo"></div>
+        <div id="chart_div_scatter"></div>
+        <div id="chart_div_column"></div>
+        <div id="chart_div_histogram"></div>
+        <div id="chart_div_bar"></div>
+        <div id="chart_div_combo"></div>
+        <div id="chart_div_area"></div>
+        <div id="chart_div_stepped_area"></div>
+        <div id="chart_div_line"></div>
+        <div id="chart_div_pie"></div>
+        <div id="chart_div_bubble"></div>
+        <div id="chart_div_donut"></div>
+        <div id="chart_div_org"></div>
+        <div id="chart_div_treemap"></div>
+        <div id="chart_div_table"></div>
+        <div id="chart_div_timeline"></div>
+        <div id="chart_div_gauge"></div>
+        <div id="chart_div_candlestick"></div>
+    </div>
+</body>
+
+</html>

@@ -27,7 +27,7 @@
                 contenedor.appendChild(elemento);
                 document.getElementById(id).value = texto;
 
-                crearselec(id, texto);
+                crearselect(id, texto);
 
             } else if (elementoSeleccionado == 2) {
                 texto = "Radio creado" + id;
@@ -43,7 +43,7 @@
 
                 contenedor.appendChild(elemento);
                 contenedor.appendChild(elemento1);
-                crearselec(id, texto);
+                crearselect(id, texto);
 
             } else if (elementoSeleccionado == 3) {
                 texto = "Text área" + id;
@@ -51,7 +51,7 @@
                 elemento.id = id;
                 contenedor.appendChild(elemento);
                 document.getElementById(id).innerHTML = texto;
-                crearselec(id, texto);
+                crearselect(id, texto);
 
             } else if (elementoSeleccionado == 4) {
                 texto = "Boton creado" + id;
@@ -59,7 +59,7 @@
                 elemento.id = id;
                 contenedor.appendChild(elemento);
                 document.getElementById(id).innerHTML = texto;
-                crearselec(id, texto);
+                crearselect(id, texto);
             }
             document.getElementById("cont").style.display = "flex";
         }
@@ -83,7 +83,7 @@
         }
     }
 
-    function crearselec(id, texto) {
+    function crearselect(id, texto) {
         //Agrega al select eliminar
         var option = document.createElement("option");
         option.value = id;
