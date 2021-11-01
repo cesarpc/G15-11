@@ -1,0 +1,30 @@
+/*
+DROP PROCEDURE registrarUsuarioo
+*/
+CREATE PROCEDURE loginUsuario(usuario VARCHAR(20), contrasenia VARCHAR(50))
+Select * from login a
+	JOIN usuarios b ON a.Usuario = b.Identificacion
+	JOIN rol c ON b.IdRol = c.IdRol
+	
+	WHERE a.Usuario = usuario AND a.Contrasenia = contrasenia  AND b.Activo = 1 AND c.Activo = 1
+
+
+CREATE PROCEDURE registrarUsuarioo(
+identificacion VARCHAR(20), 
+nombre VARCHAR(50), 
+apellido VARCHAR(50), 
+correo VARCHAR(50),
+celular VARCHAR(20),
+contrasenia VARCHAR(50),
+edad INT, 
+estatura FLOAT, 
+peso FLOAT
+)
+
+INSERT INTO login(Usuario, Contrasenia)
+VALUES(identificacion, contrasenia);
+
+
+INSERT INTO usuarios(Identificacion, Nombre, Apellido, Edad, Estatura, Peso, Correo, Celular, IdLogin, IdRol)
+VALUES  
+(identificacion, nombre, apellido, edad, estatura, peso, correo, celular, null, 4);

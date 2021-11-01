@@ -1,22 +1,33 @@
-USE base_imc
+
+
+USE base_imc;
 
 INSERT INTO login (Usuario, Contrasenia) 
 VALUES 
-('einerm', '123456789'),
-('cesarp', '123456789'),
-('deivert', '123456789'),
-('williama', '123456789')
+('123', '123456789'),
+('1234', '123456789'),
+('12345', '123456789'),
+('123456', '123456789');
 
-INSERT INTO usuarios (Nombre, Apellido, edad, Estatura, Peso, Correo, Celular, idLogin)
+INSERT INTO rol(rol)
+VALUES
+('Super Administrador'),
+('Administrador'),
+('Docente'),
+('Estudiante');
+
+INSERT INTO usuarios (Identificacion, Nombre, Apellido, Edad, Estatura, Peso, Correo, Celular, IdLogin, IdRol)
 VALUES  
-('Einer', 'Mendez', 24, 178, 61, 'einer_mendez@hotmail.com','3118442406', 1),
-('Cesar', 'Perez', 37, 178, 81, 'capc1@hotmail.com','3104059622' , 2),
-('Deiver', 'Torres', 28, 171, 75, 'deivertm@hotmail.com','3212208841', 3),
-('William', 'Avendaño', 38, 175, 76, 'wilfer1508@gmail.com','3023943186', 4)
+('12345', 'Einer', 'Mendez', 24, 178, 61, 'einer_mendez@hotmail.com','3118442406', 1, 1),
+('12345', 'Cesar', 'Perez', 37, 178, 81, 'capc1@hotmail.com','3104059622' , 2, 1),
+('12345', 'Deiver', 'Torres', 28, 171, 75, 'deivertm@hotmail.com','3212208841', 3, 1),
+('12345', 'William', 'Avendaño', 38, 175, 76, 'wilfer1508@gmail.com','3023943186', 4, 1);
 
-INSERT INTO descripcionimc(Descripcion, rango)
+INSERT INTO descripcionimc(Descripcion, Rango)
 VALUES 
 ('Bajo Peso', 'Menor a 18.5'),
 ('Normal','Entre 18.5—24.9'),
 ('Sobre Peso', 'Entre 25—29.9'),
-('Obeso', 'Mayor a 30')
+('Obeso', 'Mayor a 30');
+
+
