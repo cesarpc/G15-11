@@ -1,0 +1,4 @@
+11-Aug-2021 11:33:07.044 ADVERTENCIA [main] org.apache.catalina.session.StandardSession.doReadObject Cannot deserialize session attribute [datosRol] for session [8835495D18F30C8858F12B9570DB0E20]
+11-Aug-2021 11:33:09.815 INFORMACIÓN [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
+11-Aug-2021 11:33:09.816 INFORMACIÓN [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
+11-Aug-2021 11:33:09.819 INFORMACIÓN [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@28a0fd6c')
